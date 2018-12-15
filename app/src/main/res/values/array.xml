@@ -1,0 +1,12 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<resources>
+
+    <string-array name="array_list">
+        <item>일</item>
+        <item>이</item>
+        <item>삼</item>
+        <item>사</item>
+        <item>오</item>
+    </string-array>
+
+</resources>

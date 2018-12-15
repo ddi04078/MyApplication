@@ -1,5 +1,6 @@
 package com.example.yangjiyeon.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -11,10 +12,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText idText = (EditText) findViewById(R.id.idText);
-        EditText passwordText = (EditText) findViewById(R.id.passwordText);
+        /*EditText idText = (EditText) findViewById(R.id.idText);
+        EditText passwordText = (EditText) findViewById(R.id.passwordText);*/
 
 
+        Intent intent = new Intent(this, UserPreferenceActivity.class);
+        startActivity(intent);
 
     }
 }
