@@ -1,5 +1,6 @@
 package com.example.yangjiyeon.myapplication;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,13 +31,16 @@ public class MatchUserProgressActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(progress >= 100) {
+                    Intent intent = new Intent(MatchUserProgressActivity.this, TravelInfoActivity.class);
+                    startActivity(intent);
                     finish();
+                    return;
                 }
                 progressBar.setProgress(progress);
                 setProgressBar(progress + 1);
             }
         };
 
-        new Handler().postDelayed(task, 50);
+        new Handler().postDelayed(task, 25);
     }
 }
