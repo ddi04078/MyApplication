@@ -1,5 +1,6 @@
 package com.example.yangjiyeon.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +28,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
     private Spinner firstPreferSpinner;
     private Spinner secondPreferSpinner;
 
-    private Button leftButton;
+    private Button addPreferButton;
     private Button rightButton;
 
     @Override
@@ -49,10 +50,10 @@ public class UserPreferenceActivity extends AppCompatActivity {
         firstPreferSpinner = (Spinner)findViewById(R.id.first_prefer_spinner);
         secondPreferSpinner = (Spinner)findViewById(R.id.second_prefer_spinner);
 
-        leftButton = (Button) findViewById(R.id.left_button);
+        addPreferButton = (Button) findViewById(R.id.add_prefer_button);
         rightButton = (Button) findViewById(R.id.right_button);
 
-        leftButton.setOnClickListener(onClickListener);
+        addPreferButton.setOnClickListener(onClickListener);
         rightButton.setOnClickListener(onClickListener);
 
     }
@@ -61,11 +62,14 @@ public class UserPreferenceActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.left_button:
-                    break;
 
                 case R.id.right_button:
                     Toast.makeText(UserPreferenceActivity.this, (String) firstPreferSpinner.getSelectedItem(), Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.add_prefer_button:
+                    Intent intent = new Intent(UserPreferenceActivity.this, SuggestPreferActivity.class);
+                    startActivity(intent);
                     break;
 
                 default:
