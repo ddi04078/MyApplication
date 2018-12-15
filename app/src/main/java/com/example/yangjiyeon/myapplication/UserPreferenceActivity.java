@@ -64,7 +64,8 @@ public class UserPreferenceActivity extends AppCompatActivity {
             switch (view.getId()) {
 
                 case R.id.right_button:
-                    Toast.makeText(UserPreferenceActivity.this, (String) firstPreferSpinner.getSelectedItem(), Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(UserPreferenceActivity.this, MatchUserProgressActivity.class);
+                    startActivity(intent2);
                     break;
 
                 case R.id.add_prefer_button:

@@ -25,6 +25,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".SuggestPreferActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".MatchUserProgressActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
