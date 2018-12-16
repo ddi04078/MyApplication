@@ -46,7 +46,7 @@
                     android:textColor="#000000"
                     android:buttonTint="#fa2828"
                     android:text="한국어"
-                    android:checked="true"/>
+                    android:checked="false"/>
 
                 <RadioButton
                     android:id="@+id/option2"
@@ -60,9 +60,9 @@
                     android:id="@+id/option3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#000000"
                     android:buttonTint="#fa2828"
-                    android:text="다 가능" />
+                    android:text="상관 없음"
+                    android:textColor="#000000" />
 
             </RadioGroup>
 
@@ -95,7 +95,7 @@
                     android:textColor="#000000"
                     android:buttonTint="#fa2828"
                     android:text="동성만"
-                    android:checked="true"/>
+                    android:checked="false"/>
 
                 <RadioButton
                     android:id="@+id/option5"
@@ -120,39 +120,41 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="14dp"
+                android:text="카테고리3 : 선호하는 액티비티"
                 android:textColor="#000000"
-                android:text="카테고리3 : 액티비티"/>
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/option6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:buttonTint="#fa2828"
-                    android:text="물, 바다" />
 
-                <RadioButton
-                    android:id="@+id/option7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:buttonTint="#fa2828"
-                    android:text="산, 숲" />
+                <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:buttonTint="#fa2828"
+                android:text="물, 바다" />
 
-                <RadioButton
-                    android:id="@+id/option8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:buttonTint="#fa2828"
-                    android:text="하늘" />
+                <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:buttonTint="#fa2828"
+                android:text="산, 숲" />
+
+                <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:buttonTint="#fa2828"
+                android:text="하늘" />
+
 
             </LinearLayout>
 
@@ -205,6 +207,9 @@
                 android:entries="@array/array_list"></Spinner>
             
         </LinearLayout>
+
+
+
 
 
         <LinearLayout
