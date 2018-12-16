@@ -53,7 +53,7 @@ public class TravelInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_travel_info);
 
         text= (TextView)findViewById(R.id.text);
     }
@@ -101,9 +101,8 @@ public class TravelInfoActivity extends AppCompatActivity {
 //                +"addr="+location
 //                +"&pageNo=1&numOfRows=1000&ServiceKey=" + key;
 
-
-        String queryUrl="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"//요청 URL
-                +"&pageNo=1&numOfRows=1000&ServiceKey=" + key;
+        String queryUrl="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?"//요청 URL
+                + key;
 
         try {
             URL url= new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
