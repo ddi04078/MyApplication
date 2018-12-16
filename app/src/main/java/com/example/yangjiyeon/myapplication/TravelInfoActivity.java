@@ -1,12 +1,11 @@
 package com.example.yangjiyeon.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
-
-
 
 import android.view.View;
 import android.widget.Button;
@@ -58,11 +57,37 @@ public class TravelInfoActivity extends AppCompatActivity {
         text= (TextView)findViewById(R.id.text);
     }
 
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+
+                case R.id.button_mypage:
+                    Intent intent = new Intent(TravelInfoActivity.this, MyPageActivity.class);
+                    startActivity(intent);
+                    break;
+
+
+                case R.id.button_logout:
+                    Intent intent2 = new Intent(TravelInfoActivity.this, LoginActivity.class);
+                    startActivity(intent2);
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+    };
+
+
+
     //Button을 클릭했을 때 자동으로 호출되는 callback method
     public void mOnClick(View v){
 
         switch( v.getId() ){
-            case R.id.button:
+            case R.id.button_search:
 
                 new Thread(new Runnable() {
 

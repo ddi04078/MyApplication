@@ -1,11 +1,16 @@
 package com.example.yangjiyeon.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private OnClickListener onClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,10 +20,24 @@ public class MainActivity extends AppCompatActivity {
         /*EditText idText = (EditText) findViewById(R.id.idText);
         EditText passwordText = (EditText) findViewById(R.id.passwordText);*/
 
+//
+//        Intent intent = new Intent(this, TravelInfoActivity.class);
+//        startActivity(intent);
 
-        Intent intent = new Intent(this, UserPreferenceActivity.class);
-        startActivity(intent);
 
+        Button button_for_travel_info = (Button) findViewById(R.id.button_for_travel_info);
+        button_for_travel_info.setOnClickListener(onClickListener);
+
+
+
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TravelInfoActivity.class);
+                startActivity(intent);
+            }
+        };
     }
 }
 

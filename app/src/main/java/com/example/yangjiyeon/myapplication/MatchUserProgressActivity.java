@@ -31,7 +31,7 @@ public class MatchUserProgressActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(progress >= 100) {
-                    Intent intent = new Intent(MatchUserProgressActivity.this, TravelInfoActivity.class);
+                    Intent intent = new Intent(MatchUserProgressActivity.this, ResultForMatchingActivity.class);
                     startActivity(intent);
                     finish();
                     return;

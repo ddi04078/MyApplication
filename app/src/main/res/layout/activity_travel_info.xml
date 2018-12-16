@@ -12,13 +12,31 @@ android:padding="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="vertical">
+
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_who"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="김장미 님 "
+            android:textAlignment="center" />
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:id="@+id/button_mypage"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="마이페이지" />
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="로그아웃" />
     </LinearLayout>
 
     <LinearLayout
@@ -28,13 +46,13 @@ android:padding="10dp">
     android:weightSum="10">
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:text="search"
-        android:textSize="12sp"
-        android:onClick="mOnClick"/>
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:onClick="mOnClick"
+            android:text="@android:string/search_go"
+            android:textSize="12sp" />
 
 </LinearLayout>
 
