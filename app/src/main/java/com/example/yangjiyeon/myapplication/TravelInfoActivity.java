@@ -101,8 +101,10 @@ public class TravelInfoActivity extends AppCompatActivity {
 //                +"addr="+location
 //                +"&pageNo=1&numOfRows=1000&ServiceKey=" + key;
 
-        String queryUrl="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?"//요청 URL
-                + key;
+        String queryUrl="http://extinfo.seantour.com/acd/api/tour_api.do?" +
+                "sortCode=001002001&sido=1100000000&pageIndex=1&serviceKey=key";
+
+
 
         try {
             URL url= new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
