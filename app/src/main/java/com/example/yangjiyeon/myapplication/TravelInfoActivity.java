@@ -50,15 +50,6 @@ public class TravelInfoActivity extends AppCompatActivity {
     private Button buttonMyPage;
     private Button buttonLogout;
 
-
-    private View.OnClickListener onClickListener;
-
-
-
-
-
-
-
     public void getData() {
         try {
 //           StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList");
@@ -115,7 +106,7 @@ public class TravelInfoActivity extends AppCompatActivity {
 
 
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -131,9 +122,6 @@ public class TravelInfoActivity extends AppCompatActivity {
 
         //search 버튼을 누르면 (공공데이터)
         buttonSearch = (Button) findViewById(R.id.button_search);
-        buttonSearch.setOnClickListener(onClickListener);
-
-
         buttonSearch.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -149,9 +137,6 @@ public class TravelInfoActivity extends AppCompatActivity {
 
         //마이페이지 버튼을 누르면
         buttonMyPage = (Button) findViewById(R.id.button_mypage);
-        buttonMyPage.setOnClickListener(onClickListener);
-
-
         buttonMyPage.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
@@ -163,9 +148,6 @@ public class TravelInfoActivity extends AppCompatActivity {
 
         //로그아웃 버튼을 누르면
         buttonLogout = (Button) findViewById(R.id.button_logout);
-        buttonLogout.setOnClickListener(onClickListener);
-
-
         buttonLogout.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
