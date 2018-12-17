@@ -13,7 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class
+LoginActivity extends AppCompatActivity {
 
     private MySQLiteOpenHelper helper;
     String dbName = "st_file.db";

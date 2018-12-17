@@ -38,7 +38,6 @@
                 android:layout_width="123dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="115dp"
-                android:Alignment="center"
                 android:text="매칭 요청"
                 android:textAlignment="center" />
         </LinearLayout>

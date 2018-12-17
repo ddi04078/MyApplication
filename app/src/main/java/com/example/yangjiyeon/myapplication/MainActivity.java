@@ -10,6 +10,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button buttonForTravelInfo;
+
     private OnClickListener onClickListener;
 
     @Override
@@ -24,20 +26,17 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this, TravelInfoActivity.class);
 //        startActivity(intent);
 
-
-        Button button_for_travel_info = (Button) findViewById(R.id.button_for_travel_info);
-        button_for_travel_info.setOnClickListener(onClickListener);
-
+        buttonForTravelInfo = (Button) findViewById(R.id.button_for_travel_info);
+        buttonForTravelInfo.setOnClickListener(onClickListener);
 
 
+        buttonForTravelInfo.setOnClickListener(new View.OnClickListener(){
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, TravelInfoActivity.class);
-                startActivity(intent);
+                MainActivity.this.startActivity(intent);
             }
-        };
+        });
     }
 }
 
