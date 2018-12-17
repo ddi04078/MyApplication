@@ -42,13 +42,13 @@ import java.util.Map;
 public class TravelInfoActivity extends AppCompatActivity {
 
     TextView text;
-    String key="96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D";
+   // String key="96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D";
     String data;
 
 
     private Button buttonSearch;
     private Button buttonMyPage;
-    private Button buttonLogin;
+    private Button buttonLogout;
 
 
     private View.OnClickListener onClickListener;
@@ -80,10 +80,6 @@ public class TravelInfoActivity extends AppCompatActivity {
             urlBuilder.append("&" + URLEncoder.encode("sortCode", "UTF-8") + "=" + URLEncoder.encode("001002001", "UTF-8")); /*5.테마코드표 참조*/
             urlBuilder.append("&" + URLEncoder.encode("sido", "UTF-8") + "=" + URLEncoder.encode("1100000000", "UTF-8")); /*6.시도코드표 참조*/
             urlBuilder.append("&" + URLEncoder.encode("pageIndex", "UTF-8") + "=" + URLEncoder.encode("1,2,3", "UTF-8")); /*페이지번호 페이지당 100건 조회 */
-            urlBuilder.append("&" + URLEncoder.encode("sortCode", "UTF-8") + "=" + URLEncoder.encode("0011002001", "UTF-8")); /*5.테마코드표 참조*/
-            urlBuilder.append("&" + URLEncoder.encode("sido", "UTF-8") + "=" + URLEncoder.encode("1100000000", "UTF-8")); /*6.시도코드표 참조*/
-            urlBuilder.append("&" + URLEncoder.encode("pageIndex", "UTF-8") + "=" + URLEncoder.encode("1, 2, 3", "UTF-8")); /*페이지번호 페이지당 100건 조회 */
-
 
 
             System.out.println("Debugging______urlBuilder: " + urlBuilder); ////
@@ -133,41 +129,53 @@ public class TravelInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_travel_info);
 
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
+        //search 버튼을 누르면 (공공데이터)
+        buttonSearch = (Button) findViewById(R.id.button_search);
+        buttonSearch.setOnClickListener(onClickListener);
+
+
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.button_search:
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                getData();
-                            }
-                        }).start();
-                        break;
-
-                    case R.id.button_mypage:
-                        Intent intent = new Intent(TravelInfoActivity.this, MyPageActivity.class);
-                        startActivity(intent);
-                        break;
-
-
-                    case R.id.button_logout:
-                        Intent intent2 = new Intent(TravelInfoActivity.this, LoginActivity.class);
-                        startActivity(intent2);
-                        break;
-
-
-                    default:
-                        break;
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getData();
+                    }
+                }).start();
             }
-        };
+        });
+
+
+        //마이페이지 버튼을 누르면
+        buttonMyPage = (Button) findViewById(R.id.button_mypage);
+        buttonMyPage.setOnClickListener(onClickListener);
+
+
+        buttonMyPage.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent intent = new Intent(TravelInfoActivity.this, MyPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //로그아웃 버튼을 누르면
+        buttonLogout = (Button) findViewById(R.id.button_logout);
+        buttonLogout.setOnClickListener(onClickListener);
+
+
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent intent2 = new Intent(TravelInfoActivity.this, LoginActivity.class);
+                startActivity(intent2);
+            }
+        });
+
+
     }
-
-
-
-
 
 
 //
