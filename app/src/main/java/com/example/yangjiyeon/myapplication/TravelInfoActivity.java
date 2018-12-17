@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 
@@ -36,7 +37,9 @@ import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
-//키 : 96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TravelInfoActivity extends AppCompatActivity {
@@ -45,41 +48,37 @@ public class TravelInfoActivity extends AppCompatActivity {
    // String key="96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D";
     String data;
 
-
     private Button buttonSearch;
     private Button buttonMyPage;
     private Button buttonLogout;
 
-
-    private View.OnClickListener onClickListener;
-
-
-
-
+    private List<HashMap<String,String>> iteminfoList = null;
+  //  private EditText searchKeyword = null;
 
 
 
     public void getData() {
         try {
-//           StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList");
-//           urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" + "96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D");
-//           urlBuilder.append("&" + URLEncoder.encode("startPage","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("pageSize","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("AND", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("B", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("15", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("4", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode("4", "UTF-8"));
-//           urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"));
+            //api 26으로 실행하기
+            StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList");
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" + "96W192NgCx0baB%2BUh9bpdbO8G%2F56kNv04MMzzsgUoJP8Pt5MVwNXxfWy6j%2BF0Q4MtThG3Lg3VN9ifshBZvvH5A%3D%3D");
+            urlBuilder.append("&" + URLEncoder.encode("startPage","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("pageSize","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("AND", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("B", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("15", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("4", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode("4", "UTF-8"));
+            urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8"));
 
-            StringBuilder urlBuilder = new StringBuilder("http://extinfo.seantour.com/acd/api/tour_api.do"); /*URL*/
-            urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + "1va%2ByNjcWHtnvK5bJrmiceopvzMw6jCMJbVCIlLRLm39PS30kmQQ4i6AJ0NZ2OOW7kJlK0nbHHslbfMLAOgpzA%3D%3D"); /*Service Key*/
-            urlBuilder.append("&" + URLEncoder.encode("sortCode", "UTF-8") + "=" + URLEncoder.encode("001002001", "UTF-8")); /*5.테마코드표 참조*/
-            urlBuilder.append("&" + URLEncoder.encode("sido", "UTF-8") + "=" + URLEncoder.encode("1100000000", "UTF-8")); /*6.시도코드표 참조*/
-            urlBuilder.append("&" + URLEncoder.encode("pageIndex", "UTF-8") + "=" + URLEncoder.encode("1,2,3", "UTF-8")); /*페이지번호 페이지당 100건 조회 */
+//            StringBuilder urlBuilder = new StringBuilder("http://extinfo.seantour.com/acd/api/tour_api.do"); /*URL*/
+//            urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + "1va%2ByNjcWHtnvK5bJrmiceopvzMw6jCMJbVCIlLRLm39PS30kmQQ4i6AJ0NZ2OOW7kJlK0nbHHslbfMLAOgpzA%3D%3D"); /*Service Key*/
+//            urlBuilder.append("&" + URLEncoder.encode("sortCode", "UTF-8") + "=" + URLEncoder.encode("001002001", "UTF-8")); /*5.테마코드표 참조*/
+//            urlBuilder.append("&" + URLEncoder.encode("sido", "UTF-8") + "=" + URLEncoder.encode("1100000000", "UTF-8")); /*6.시도코드표 참조*/
+//            urlBuilder.append("&" + URLEncoder.encode("pageIndex", "UTF-8") + "=" + URLEncoder.encode("1,2,3", "UTF-8")); /*페이지번호 페이지당 100건 조회 */
 
 
             System.out.println("Debugging______urlBuilder: " + urlBuilder); ////
@@ -103,36 +102,46 @@ public class TravelInfoActivity extends AppCompatActivity {
             rd.close();
             conn.disconnect();
 
-
             //xml을 json으로
             JSONObject jsonObj = XML.toJSONObject(sb.toString());
             Log.d("TEST", jsonObj.toString());
 
-
             System.out.println("----------------Debuggingggggggg~~-----------");
             System.out.println(jsonObj);
+
+            //json파싱 (구글링 : https://webnautes.tistory.com/471)
+            //gson 이용 (구글링 : http://emflant.tistory.com/47)
+            JSONObject response = jsonObj.getJSONObject("response");
+            JSONObject body = response.getJSONObject("body");
+            JSONObject items = body.getJSONObject("items");
+            JSONArray item = items.getJSONArray("item");
+
+            //for (int i = 0; i < item.length(); i++) {
+            for (int i = 0; i < 7; i++) {
+
+                JSONObject itemInfo = item.getJSONObject(i);
+
+                String addr1 = itemInfo.getString("addr1");
+                String addr2 = itemInfo.getString("addr2");
+                String firstimage = itemInfo.getString("firstimage");
+                String mapx = itemInfo.getString("mapx");
+                String mapy = itemInfo.getString("mapy");
+                String tel = itemInfo.getString("tel");
+                String title = itemInfo.getString("title");
+            }
             //  jsonObj.getJSONArray("devices");
-
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
-
-
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_info);
 
-
         //search 버튼을 누르면 (공공데이터)
         buttonSearch = (Button) findViewById(R.id.button_search);
-        buttonSearch.setOnClickListener(onClickListener);
-
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
 
@@ -149,8 +158,6 @@ public class TravelInfoActivity extends AppCompatActivity {
 
         //마이페이지 버튼을 누르면
         buttonMyPage = (Button) findViewById(R.id.button_mypage);
-        buttonMyPage.setOnClickListener(onClickListener);
-
 
         buttonMyPage.setOnClickListener(new View.OnClickListener() {
 
@@ -163,8 +170,6 @@ public class TravelInfoActivity extends AppCompatActivity {
 
         //로그아웃 버튼을 누르면
         buttonLogout = (Button) findViewById(R.id.button_logout);
-        buttonLogout.setOnClickListener(onClickListener);
-
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
 
