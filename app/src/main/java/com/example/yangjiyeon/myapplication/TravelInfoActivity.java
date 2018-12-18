@@ -144,9 +144,16 @@ public class TravelInfoActivity extends AppCompatActivity {
 
             }
 
-            //어댑터 초기화부분 itemList와 어댑터를 연결해준다.
-            adapter = new ItemListAdapter(getApplicationContext(), itemList);
-            listView.setAdapter(adapter);
+            //http://sharp57dev.tistory.com/21
+            //스레드 내부의 ui 작업은 runOnUiThread로 감싸준다.
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //어댑터 초기화부분 itemList와 어댑터를 연결해준다.
+                    adapter = new ItemListAdapter(getApplicationContext(), itemList);
+                    listView.setAdapter(adapter);
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -167,11 +174,12 @@ public class TravelInfoActivity extends AppCompatActivity {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                new Handler().postDelayed(new Runnable() {
+                new Thread(new Runnable() {
+                    @Override
                     public void run() {
                         getData();
                     }
-                },800);
+                }).start();
             }
         });
 
