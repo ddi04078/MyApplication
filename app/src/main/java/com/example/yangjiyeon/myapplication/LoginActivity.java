@@ -34,6 +34,14 @@ LoginActivity extends AppCompatActivity {
         Button loginButton = (Button) findViewById(R.id.loginButton);
         TextView registerButton = (TextView) findViewById(R.id.registerButton);
 
+        loginButton.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View view){
+                Intent loginIntent = new Intent(LoginActivity.this, UserPreferenceActivity.class);
+                LoginActivity.this.startActivity(loginIntent);
+            }
+        });
+
         //registerButton(텍스트뷰) 클릭시 발생하는 이벤트
         registerButton.setOnClickListener(new View.OnClickListener(){
 
@@ -42,7 +50,6 @@ LoginActivity extends AppCompatActivity {
                 LoginActivity.this.startActivity(registerIntent);
             }
         });
-
 
         // sqLite3 : 모바일 용으로 제작된 경량화 DB
         // C언어로 엔진이 제작되어 가볍다

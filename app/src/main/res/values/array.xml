@@ -1,12 +1,16 @@
 <!--?xml version="1.0" encoding="utf-8"?-->
 <resources>
 
-    <string-array name="array_list">
-        <item>일</item>
-        <item>이</item>
-        <item>삼</item>
-        <item>사</item>
-        <item>오</item>
+    <string-array name="first">
+        <item>카테고리1</item>
+        <item>카테고리2</item>
+        <item>카테고리3</item>
+    </string-array>
+
+    <string-array name="second">
+        <item>카테고리1</item>
+        <item>카테고리2</item>
+        <item>카테고리3</item>
     </string-array>
 
 </resources>

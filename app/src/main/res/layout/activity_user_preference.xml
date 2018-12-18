@@ -189,7 +189,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:entries="@array/array_list"></Spinner>
+                android:entries="@array/first"></Spinner>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,7 +204,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:entries="@array/array_list"></Spinner>
+                android:entries="@array/second"></Spinner>
             
         </LinearLayout>
 

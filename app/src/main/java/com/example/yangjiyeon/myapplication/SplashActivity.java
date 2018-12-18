@@ -19,7 +19,7 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
 
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 SplashActivity.this.finish();
             }
         },800);
