@@ -50,7 +50,6 @@ android:padding="10dp">
             android:id="@+id/button_search"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:onClick="mClick"
             android:text="@android:string/search_go"
             android:textSize="12sp" />
 
