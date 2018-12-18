@@ -2,10 +2,13 @@ package com.example.yangjiyeon.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +55,9 @@ public class TravelInfoActivity extends AppCompatActivity {
     private Button buttonMyPage;
     private Button buttonLogout;
 
+    private ListView listView;
+    private ItemListAdapter adapter;
+    private List<Item> itemList;
 
     public void getData() {
         try {
@@ -112,20 +118,36 @@ public class TravelInfoActivity extends AppCompatActivity {
             JSONObject items = body.getJSONObject("items");
             JSONArray item = items.getJSONArray("item");
 
+            int count = 0;
+
+            listView = (ListView)findViewById(R.id.listView);
+            itemList = new ArrayList<Item>();
+
             //for (int i = 0; i < item.length(); i++) {
             for (int i = 0; i < 3; i++) {
 
                 JSONObject itemInfo = item.getJSONObject(i);
+                System.out.println("----------------jsonObj~~-----------");
+                System.out.println(jsonObj);
 
                 String addr1 = itemInfo.getString("addr1");
                 String addr2 = itemInfo.getString("addr2");
-                String firstimage = itemInfo.getString("firstimage");
                 String mapx = itemInfo.getString("mapx");
                 String mapy = itemInfo.getString("mapy");
                 String tel = itemInfo.getString("tel");
                 String title = itemInfo.getString("title");
+
+                //값들을 Item클래스에 묶어줌
+                Item _item = new Item(addr1, addr2, mapx, mapy, tel, title);
+                itemList.add(_item);//리스트뷰에 값을 추가해줍니다
+                count++;
+
             }
-            //  jsonObj.getJSONArray("devices");
+
+            //어댑터 초기화부분 itemList와 어댑터를 연결해준다.
+            adapter = new ItemListAdapter(getApplicationContext(), itemList);
+            listView.setAdapter(adapter);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -136,18 +158,20 @@ public class TravelInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_info);
 
+     //   Intent intent = getIntent();
+
+        //버튼 3개
         //search 버튼을 누르면 (공공데이터)
         buttonSearch = (Button) findViewById(R.id.button_search);
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
+                new Handler().postDelayed(new Runnable() {
                     public void run() {
                         getData();
                     }
-                }).start();
+                },800);
             }
         });
 
