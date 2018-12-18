@@ -52,10 +52,6 @@ public class TravelInfoActivity extends AppCompatActivity {
     private Button buttonMyPage;
     private Button buttonLogout;
 
-    private List<HashMap<String,String>> iteminfoList = null;
-  //  private EditText searchKeyword = null;
-
-
 
     public void getData() {
         try {
@@ -117,7 +113,7 @@ public class TravelInfoActivity extends AppCompatActivity {
             JSONArray item = items.getJSONArray("item");
 
             //for (int i = 0; i < item.length(); i++) {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 3; i++) {
 
                 JSONObject itemInfo = item.getJSONObject(i);
 
